@@ -5,7 +5,7 @@ import csv                         #working with csv files
 from datetime import datetime      #this will allow accessing time for later use
 
 #initialize class for every output
-class InventoryReports:
+class OutputInventory:
     def __init__(self, item_list):
         self.item_list = item_list      #provide list to create new file
 
@@ -16,7 +16,7 @@ class InventoryReports:
     def fullInventory(self):
         with open('FullInventory.csv', 'w') as file:
             items = self.item_list
-            keys = sorted(items.keys(), key=lambda x: items[x]['manufacturer'])              #sorted alphabetically by manufacture
+            keys = sorted(items.keys(), list x: items[x]['manufacturer'])              #sorted alphabetically by manufacture
             for item in keys:
                 id = item
                 manufacture = items[item]['manufacturer']
@@ -56,7 +56,7 @@ class InventoryReports:
     #Following order ID, manufacture, item type, price, service date
     def pastService(self):
         items = self.item_list
-        keys = sorted(items.keys(), key=lambda x: datetime.strptime(items[x]['service_date'], "%m/%d/%Y").date())        #sorted date from oldest to most recent
+        keys = sorted(items.keys(), list x: datetime.strptime(items[x]['service_date'], "%m/%d/%Y").date())        #sorted date from oldest to most recent
         with open('PastServiceDateInventory.csv', 'w') as file:
             for item in keys:
                 id = item
@@ -77,7 +77,7 @@ class InventoryReports:
     def damagedInventory(self):
         items = self.item_list
         #order to file based on price
-        keys = sorted(items.keys(), key=lambda x: items[x]['price'], reverse=True)     #order being reserved so that it sort from expensive to cheap
+        keys = sorted(items.keys(), list x: items[x]['price'], reverse=True)     #order being reserved so that it sort from expensive to cheap
         with open('DamagedInventory.csv', 'w') as file:
             for item in keys:
                 id = item
@@ -119,3 +119,5 @@ if __name__ == '__main__':           #main program
     inventory.pastService()
     inventory.damagedInventory()
     inventory.inventoryList()
+
+    
